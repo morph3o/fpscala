@@ -1,11 +1,19 @@
 object MyModule {
 
-  def fib(n: Int): Int = {
+  def fibonacciRecursive(n: Int): Int = {
     def go(n: Int): Int = {
       if(n <= 1) n
       else go(n-1) + go(n-2)
     }
     go(n)
+  }
+
+  def fibonacciTailRecursive(n: Int): Int = {
+    def tr(num: Int, n0: Int, n1: Int): Int = {
+      if (num == 0) n0
+      else tr(num-1, n1, n0 + n1)
+    }
+    tr(n, 0, 1)
   }
 
   def factorial(n: Int): Int = {
@@ -20,9 +28,14 @@ object MyModule {
     else n
   }
 
-  private def formatFib(n: Int): String = {
+  private def formatFibonacciRecursive(n: Int): String = {
     val msg = "The fibonacci number of %d is %d"
-    msg.format(n, fib(n))
+    msg.format(n, fibonacciRecursive(n))
+  }
+
+  private def formatFibTailRecursive(n: Int): String = {
+    val msg = "The fibonacci (TR) number of %d is %d"
+    msg.format(n, fibonacciTailRecursive(n))
   }
 
   private def formatFactorial(n: Int): String = {
@@ -38,7 +51,8 @@ object MyModule {
   def main(args: Array[String]): Unit = {
     println(formatAbs(42))
     println(formatFactorial(7))
-    println(formatFib(2))
+    println(formatFibonacciRecursive(4))
+    println(formatFibTailRecursive(4))
   }
 
 }
