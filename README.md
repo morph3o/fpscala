@@ -1,4 +1,4 @@
-Learning Functional Programming in Scala
+# Learning Functional Programming in Scala
 
 This project is just for learning Scala purpose.
 
