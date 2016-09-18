@@ -7,7 +7,7 @@ def curry[A, B, C](f: (A, B) => C): A => (B => C) =
 
 
 def uncurry[A, B, C](f: A => B => C): (A, B) => C =
-  (a: A, b: B) => f(a)(b)
+  (a: A, b: B) => f(a)(b) // This is equivalent to write (a,b) => f.apply(a).apply(b)
 
 
 def compose[A, B, C](f: A => B, g: B => C): A => C =
