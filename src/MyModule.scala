@@ -36,8 +36,8 @@ object MyModule {
   def main(args: Array[String]): Unit = {
     println(formatResult("absolut value", 42, abs))
     println(formatResult("factorial", 7, factorial))
-    println(formatResult("fibonacci (recursive)", 4, fibonacciRecursive))
-    println(formatResult("fibonacci (tail recursive)", 4, fibonacciTailRecursive))
+    println(formatResult("fibonacci (tail recursive)", 50000, fibonacciTailRecursive))
+    println(formatResult("fibonacci (recursive)", 50000, fibonacciRecursive))
   }
 
 }
