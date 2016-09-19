@@ -8,3 +8,7 @@ val listEmpty = Nil
 tail(list1)
 list1
 tail(Nil)
+
+setHead(0, list1)
+list1
+
