@@ -59,4 +59,9 @@ object List {
     case _ => 101
   }
 
+  def tail[A](list: List[A]): List[A] = list match{
+    case Nil => Nil
+    case Cons(x, xs) => xs
+  }
+
 }
