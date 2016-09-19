@@ -65,8 +65,8 @@ object List {
   }
 
   def setHead[A](v: A, list: List[A]): List[A] = list match {
-    case Nil => Cons(v, Nil)
-    case Cons(x, _) => Cons(v, list)
+    case Nil => sys.error("The list is empty")
+    case Cons(_,t) => Cons(v,t)
   }
 
 }
