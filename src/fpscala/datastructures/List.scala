@@ -60,8 +60,8 @@ object List {
   }
 
   def tail[A](list: List[A]): List[A] = list match{
-    case Nil => Nil
-    case Cons(x, xs) => xs
+    case Nil => sys.error("The list is empty")
+    case Cons(_, xs) => xs
   }
 
   def setHead[A](v: A, list: List[A]): List[A] = list match {
