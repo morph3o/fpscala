@@ -1,13 +1,16 @@
-import fpscala.datastructures.List._
+object ListTesting {
+  import fpscala.datastructures.List
 
-println(x)
+  println(List.x)
 
-val list1 = List(1,2,3)
-val listEmpty = Nil
+  val list1 = List(1,2,3)
+  val listEmpty = Nil
 
-tail(list1)
-list1
+  List.tail(list1)
+  list1
 
-setHead(0, list1)
-list1
+  List.setHead(0, list1)
+  list1
 
+  List.drop(list1, 10)
+}
