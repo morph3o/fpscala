@@ -69,4 +69,11 @@ object List {
     case Cons(_,t) => Cons(v,t)
   }
 
+  def drop[A](l: List[A], n: Int): List[A] = n match {
+    case n if n <= 0 => l
+    case _ =>
+      if(tail(l) == Nil) Nil
+      else drop(tail(l), n-1)
+  }
+
 }
