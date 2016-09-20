@@ -13,4 +13,6 @@ object ListTesting {
   list1
 
   List.drop(list1, 10)
+
+  List.dropWhile(list1, (x: Int) => x > 1)
 }
