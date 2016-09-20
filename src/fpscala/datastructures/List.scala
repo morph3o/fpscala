@@ -76,10 +76,14 @@ object List {
       else drop(tail(l), n-1)
   }
 
+  /*
+  * The method was improved by:
+  * - Moving the if-else statement to the case level
+  * - Instead of calling drop method, we just call dropWhile with the tail of the current list
+  * */
   def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
-    case Cons(h,t) =>
-      if(f(h)) dropWhile(drop(l,1), f)
-      else l
+    case Cons(h,t) if f(h) => dropWhile(t, f)
+    case _ => l
   }
 
 }
