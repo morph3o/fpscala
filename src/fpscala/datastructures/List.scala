@@ -92,4 +92,15 @@ object List {
       case _ => Nil
   }
 
+  def init2[A](l: List[A]): List[A] = {
+    import collection.mutable.ListBuffer
+    val lAux = new ListBuffer[A]
+    def loop(cur: List[A]): List[A] = cur match {
+      case Nil => sys.error("init of empty list")
+      case Cons(_,Nil) => List(lAux.toList: _*)
+      case Cons(h,t) => lAux += h; loop(t)
+    }
+    loop(l)
+  }
+
 }

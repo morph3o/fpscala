@@ -18,5 +18,6 @@ object ListTesting {
 
 
   List.init(list1)
+  List.init2(list1)
   list1
 }
