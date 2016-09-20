@@ -15,4 +15,8 @@ object ListTesting {
   List.drop(list1, 10)
 
   List.dropWhile(list1, (x: Int) => x > 1)
+
+
+  List.init(list1)
+  list1
 }
