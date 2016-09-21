@@ -120,15 +120,10 @@ object List {
     foldRight(as, 0)((_,length) => length + 1)
 
   def foldLeft[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
-    import collection.mutable.ListBuffer
-    val lAux = new ListBuffer[B]
-    @annotation.tailrec
-    def extractMembers(cur: List[A], acc: B): B = cur match {
-      case Nil => sys.error("empty list")
-      case Cons(h, Nil) => lAux += f(acc,h); lAux.toList.last
-      case Cons(h,t) => lAux += f(acc,h); extractMembers(t, f(acc, h))
+    as match {
+      case Nil => z
+      case Cons(h,t) => foldLeft(t, f(z,h))(f)
     }
-    extractMembers(as, z)
   }
 
   def sum3(ns: List[Int]) =
