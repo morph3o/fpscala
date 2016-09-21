@@ -20,4 +20,7 @@ object ListTesting {
   List.init(list1)
   List.init2(list1)
   list1
+
+  List.sum2(list1)
+  List.product2(List(1.0,2.0,3.0))
 }
