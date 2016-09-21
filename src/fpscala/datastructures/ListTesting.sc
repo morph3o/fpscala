@@ -32,4 +32,6 @@ object ListTesting {
   List.sum3(list1)
   List.product3(List(1.0,2.0,3.0))
   List.length2(list1)
+
+  List.reverse(list1)
 }
