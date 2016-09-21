@@ -132,4 +132,7 @@ object List {
   def product3(ns: List[Double]) =
     foldLeft(ns, 1.0)(_ * _)
 
+  def length2[A](ns: List[A]): Int =
+    foldLeft(ns, 0)((length, _) => length + 1)
+
 }
