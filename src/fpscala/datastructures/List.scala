@@ -117,6 +117,6 @@ object List {
     foldRight(ns, 1.0)(_ * _) // foldRight(ns, 1.0)((x,y) => x * y)
 
   def length[A](as: List[A]): Int =
-    foldRight(as, 0)((x,y) => y + 1)
+    foldRight(as, 0)((_,length) => length + 1)
 
 }
