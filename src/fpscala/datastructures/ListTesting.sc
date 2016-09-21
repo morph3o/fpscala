@@ -1,3 +1,5 @@
+import fpscala.datastructures.Cons
+
 object ListTesting {
   import fpscala.datastructures.List
 
@@ -23,4 +25,8 @@ object ListTesting {
 
   List.sum2(list1)
   List.product2(List(1.0,2.0,3.0))
+
+  List.length(list1)
+  List.length(List(1))
+
 }

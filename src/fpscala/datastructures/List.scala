@@ -116,4 +116,7 @@ object List {
   def product2(ns: List[Double]) =
     foldRight(ns, 1.0)(_ * _) // foldRight(ns, 1.0)((x,y) => x * y)
 
+  def length[A](as: List[A]): Int =
+    foldRight(as, 0)((x,y) => y + 1)
+
 }
