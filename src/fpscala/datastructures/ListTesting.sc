@@ -29,4 +29,6 @@ object ListTesting {
   List.length(list1)
   List.length(List(1))
 
+  List.sum3(list1)
+  List.product3(List(1.0,2.0,3.0))
 }
