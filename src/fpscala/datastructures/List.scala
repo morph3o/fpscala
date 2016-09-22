@@ -208,9 +208,6 @@ object List {
   }
 
   def addOne(l: List[Int]): List[Int] = {
-    l match {
-      case Nil => Nil
-      case Cons(h,t) => Cons(h+1, addOne(tail(l))) //Cons(foldRightViaFoldLeft(t,h)((x,y) => h+1),t)
-    }
+    foldRight(l, Nil: List[Int])((x,y) => Cons(x+1,y))
   }
 }
