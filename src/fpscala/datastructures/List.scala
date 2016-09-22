@@ -110,6 +110,13 @@ object List {
     }
   }
 
+  def foldRight2[A,B](as: List[A], z: B)(f: (A, B) => B): B = {
+    as match {
+      case Nil => z
+      case Cons(h,t) => f(h, foldLeft(t,z)((z,h) => f(h,z)))
+    }
+  }
+
   def sum2(ns: List[Int]) =
     foldRight(ns, 0)(_ + _) // foldRight(ns, 0)((x,y) => x + y)
 
@@ -123,6 +130,13 @@ object List {
     as match {
       case Nil => z
       case Cons(h,t) => foldLeft(t, f(z,h))(f)
+    }
+  }
+
+  def foldLeft2[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
+    as match {
+      case Nil => z
+      case Cons(h,t) => f(foldRight(t,z)((h,z) => f(z,h)), h)
     }
   }
 
