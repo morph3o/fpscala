@@ -210,4 +210,8 @@ object List {
   def addOne(l: List[Int]): List[Int] = {
     foldRightViaFoldLeft(l, Nil: List[Int])((x,y) => Cons(x+1,y))
   }
+
+  def transformList(l: List[Double]): List[String] = {
+    foldRightViaFoldLeft(l, Nil: List[String])((h,t) => Cons(h.toString,t))
+  }
 }
