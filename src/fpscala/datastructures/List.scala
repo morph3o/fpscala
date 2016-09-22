@@ -110,7 +110,6 @@ object List {
     }
   }
 
-
   def sum2(ns: List[Int]) =
   foldRight(ns, 0)(_ + _) // foldRight(ns, 0)((x,y) => x + y)
 
@@ -182,6 +181,13 @@ object List {
         }
         loop(l)
       }
+    }
+  }
+
+  def append[A](a1: List[A], a2: List[A]): List[A] = {
+    a1 match {
+      case Nil => a2
+      case Cons(h,t) => Cons(h, append(t, a2))
     }
   }
 
