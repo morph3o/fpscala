@@ -206,4 +206,11 @@ object List {
   def concat[A](LofL: List[List[A]]): List[A] = {
     foldLeft(LofL, Nil: List[A])(appendUsingFoldLeft(_,_))
   }
+
+  def addOne(l: List[Int]): List[Int] = {
+    l match {
+      case Nil => Nil
+      case Cons(h,t) => Cons(h+1, addOne(tail(l))) //Cons(foldRightViaFoldLeft(t,h)((x,y) => h+1),t)
+    }
+  }
 }
