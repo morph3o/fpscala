@@ -208,6 +208,6 @@ object List {
   }
 
   def addOne(l: List[Int]): List[Int] = {
-    foldRight(l, Nil: List[Int])((x,y) => Cons(x+1,y))
+    foldRightViaFoldLeft(l, Nil: List[Int])((x,y) => Cons(x+1,y))
   }
 }
