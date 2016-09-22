@@ -136,14 +136,20 @@ object List {
     foldLeft(ns, 0)((length, _) => length + 1)
 
   def reverse[A](l: List[A]): List[A] = {
-    import collection.mutable.ListBuffer
-    val reverseList = new ListBuffer[A]
-    def loop(cur: List[A]): List[A] = cur match {
-      case Nil => sys.error("empty list")
-      case Cons(h,Nil) => reverseList.prepend(h); List(reverseList.toList: _*)
-      case Cons(h,t) => reverseList.prepend(h); loop(t)
+    l match {
+      case Nil => sys.error("reverse of empty list")
+      case Cons(h,t) => {
+        import collection.mutable.ListBuffer
+        val reverseList = new ListBuffer[A]
+        def loop(as: List[A]): List[A] = {
+          as match {
+            case Nil => List(reverseList.toList: _*)
+            case Cons(h,t) => reverseList.prepend(foldLeft(as, h)((x,y) => x)); loop(t)
+          }
+        }
+        loop(l)
+      }
     }
-    loop(l)
   }
 
 }
