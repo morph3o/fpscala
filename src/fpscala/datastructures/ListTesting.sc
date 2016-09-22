@@ -34,4 +34,15 @@ object ListTesting {
   List.length2(list1)
 
   List.reverse(list1)
+
+
+  println("Testing the new foldRightViaFoldLeft")
+  List.sum22(list1)
+  List.product22(List(1.0,2.0,3.0))
+  List.length22(list1)
+
+  println("Testing the new foldLeftViaFoldRight")
+  List.sum33(list1)
+  List.product33(List(1.0,2.0,3.0))
+  List.length33(list1)
 }

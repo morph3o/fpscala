@@ -110,21 +110,31 @@ object List {
     }
   }
 
-  def foldRight2[A,B](as: List[A], z: B)(f: (A, B) => B): B = {
+
+  def sum2(ns: List[Int]) =
+  foldRight(ns, 0)(_ + _) // foldRight(ns, 0)((x,y) => x + y)
+
+  def product2(ns: List[Double]) =
+  foldRight(ns, 1.0)(_ * _) // foldRight(ns, 1.0)((x,y) => x * y)
+
+  def length[A](as: List[A]): Int =
+  foldRight(as, 0)((_,length) => length + 1)
+
+  def foldRightViaFoldLeft[A,B](as: List[A], z: B)(f: (A, B) => B): B = {
     as match {
       case Nil => z
       case Cons(h,t) => f(h, foldLeft(t,z)((z,h) => f(h,z)))
     }
   }
 
-  def sum2(ns: List[Int]) =
-    foldRight(ns, 0)(_ + _) // foldRight(ns, 0)((x,y) => x + y)
+  def sum22(ns: List[Int]) =
+    foldRightViaFoldLeft(ns, 0)(_ + _) // foldRight(ns, 0)((x,y) => x + y)
 
-  def product2(ns: List[Double]) =
-    foldRight(ns, 1.0)(_ * _) // foldRight(ns, 1.0)((x,y) => x * y)
+  def product22(ns: List[Double]) =
+    foldRightViaFoldLeft(ns, 1.0)(_ * _) // foldRight(ns, 1.0)((x,y) => x * y)
 
-  def length[A](as: List[A]): Int =
-    foldRight(as, 0)((_,length) => length + 1)
+  def length22[A](as: List[A]): Int =
+    foldRightViaFoldLeft(as, 0)((_,length) => length + 1)
 
   def foldLeft[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
     as match {
@@ -133,21 +143,30 @@ object List {
     }
   }
 
-  def foldLeft2[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
+  def sum3(ns: List[Int]) =
+  foldLeft(ns, 0)(_ + _)
+
+  def product3(ns: List[Double]) =
+  foldLeft(ns, 1.0)(_ * _)
+
+  def length2[A](ns: List[A]): Int =
+  foldLeft(ns, 0)((length, _) => length + 1)
+
+  def foldLeftViaFoldRight[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
     as match {
       case Nil => z
       case Cons(h,t) => f(foldRight(t,z)((h,z) => f(z,h)), h)
     }
   }
 
-  def sum3(ns: List[Int]) =
-    foldLeft(ns, 0)(_ + _)
+  def sum33(ns: List[Int]) =
+    foldLeftViaFoldRight(ns, 0)(_ + _)
 
-  def product3(ns: List[Double]) =
-    foldLeft(ns, 1.0)(_ * _)
+  def product33(ns: List[Double]) =
+    foldLeftViaFoldRight(ns, 1.0)(_ * _)
 
-  def length2[A](ns: List[A]): Int =
-    foldLeft(ns, 0)((length, _) => length + 1)
+  def length33[A](ns: List[A]): Int =
+    foldLeftViaFoldRight(ns, 0)((length, _) => length + 1)
 
   def reverse[A](l: List[A]): List[A] = {
     l match {
