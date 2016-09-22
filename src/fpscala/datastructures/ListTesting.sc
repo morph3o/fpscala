@@ -49,6 +49,10 @@ object ListTesting {
   println("Testing append")
   List.append(List(1,2,3), List(4,5,6))
   List.appendUsingFoldLeft(List(1,2,3), List(4,5,6))
+  List.appendUsingFoldLeftAccordingToBook(List(1,2,3), List(4,5,6))
 
   List.foldLeft(List(1,2,3), 0)((x,y) => y)
+
+  val t = List(List(1,2,3),List(4,5,6),List(7,8,9))
+  List.concat(List(List(1,2,3),List(4,5,6),List(7,8,9)))
 }

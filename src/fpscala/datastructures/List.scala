@@ -198,4 +198,12 @@ object List {
       case Cons(h,t) => appendUsingFoldLeft(init2(a1), Cons(foldLeft(t,h)((x,y) => y), a2))
     }
   }
+
+  def appendUsingFoldLeftAccordingToBook[A](a1: List[A], a2: List[A]): List[A] = {
+    foldRight(a1,a2)(Cons(_,_))
+  }
+
+  def concat[A](LofL: List[List[A]]): List[A] = {
+    foldLeft(LofL, Nil: List[A])(appendUsingFoldLeft(_,_))
+  }
 }
