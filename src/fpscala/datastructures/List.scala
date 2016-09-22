@@ -135,12 +135,6 @@ object List {
   def length22[A](as: List[A]): Int =
     foldRightViaFoldLeft(as, 0)((_,length) => length + 1)
 
-  def foldLeft[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
-    as match {
-      case Nil => z
-      case Cons(h,t) => foldLeft(t, f(z,h))(f)
-    }
-  }
 
   def sum3(ns: List[Int]) =
   foldLeft(ns, 0)(_ + _)
@@ -159,13 +153,13 @@ object List {
   }
 
   def sum33(ns: List[Int]) =
-    foldLeftViaFoldRight(ns, 0)(_ + _)
+  foldLeftViaFoldRight(ns, 0)(_ + _)
 
   def product33(ns: List[Double]) =
-    foldLeftViaFoldRight(ns, 1.0)(_ * _)
+  foldLeftViaFoldRight(ns, 1.0)(_ * _)
 
   def length33[A](ns: List[A]): Int =
-    foldLeftViaFoldRight(ns, 0)((length, _) => length + 1)
+  foldLeftViaFoldRight(ns, 0)((length, _) => length + 1)
 
   def reverse[A](l: List[A]): List[A] = {
     l match {
@@ -191,4 +185,17 @@ object List {
     }
   }
 
+  def foldLeft[A,B](as: List[A], z: B)(f: (B, A) => B): B = {
+    as match {
+      case Nil => z
+      case Cons(h,t) => foldLeft(t, f(z,h))(f)
+    }
+  }
+
+  def appendUsingFoldLeft[A](a1: List[A], a2: List[A]): List[A] = {
+    a1 match {
+      case Nil => a2
+      case Cons(h,t) => appendUsingFoldLeft(init2(a1), Cons(foldLeft(t,h)((x,y) => y), a2))
+    }
+  }
 }

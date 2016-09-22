@@ -45,4 +45,10 @@ object ListTesting {
   List.sum33(list1)
   List.product33(List(1.0,2.0,3.0))
   List.length33(list1)
+
+  println("Testing append")
+  List.append(List(1,2,3), List(4,5,6))
+  List.appendUsingFoldLeft(List(1,2,3), List(4,5,6))
+
+  List.foldLeft(List(1,2,3), 0)((x,y) => y)
 }
