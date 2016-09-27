@@ -1,5 +1,3 @@
-import fpscala.datastructures.Cons
-
 object ListTesting {
   import fpscala.datastructures.List
 
@@ -59,4 +57,6 @@ object ListTesting {
   List.addOne(list1)
   List.transformList(List(1.0,2.0,3.0))
   list1
+
+  List.map(List(1,2,3,4))(x => println(x))
 }

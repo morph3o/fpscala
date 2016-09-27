@@ -214,4 +214,20 @@ object List {
   def transformList(l: List[Double]): List[String] = {
     foldRightViaFoldLeft(l, Nil: List[String])((h,t) => Cons(h.toString,t))
   }
+
+  def map[A,B](as: List[A])(f: A => B): List[B] = {
+    as match {
+      case Cons(h,t) => {
+        import collection.mutable.ListBuffer
+        val l = new ListBuffer[B]
+        def loop(ol: List[A]): List[B] = {
+          ol match {
+            case Nil => List(l.toList: _*)
+            case Cons(h,t) => l += f(h); loop(t)
+          }
+        }
+        loop(as)
+      }
+    }
+  }
 }
