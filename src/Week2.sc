@@ -55,5 +55,4 @@ object Week2 {
 
   sqrt(2)
 
-
 }
