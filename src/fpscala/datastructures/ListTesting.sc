@@ -61,4 +61,6 @@ object ListTesting {
   List.map(List(1,2,3,4))(x => println(x))
 
   val testList = List.filter(List(1,2,3,4))(y => y > 2)
+
+  List.nth(List(1,2,3,4), 0)
 }
