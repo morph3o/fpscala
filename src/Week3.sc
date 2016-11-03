@@ -38,3 +38,8 @@ val t2 = t1 incl 7
 val t3 = t2 incl 3
 
 val t4 = t1 union (new NonEmpty(8, Empty, Empty))
+
+val a: Array[NonEmpty] = Array(new NonEmpty(1, Empty, Empty))
+val b: Array[IntSet] = a
+b(0) = Empty
+val s: NonEmpty = a(0)

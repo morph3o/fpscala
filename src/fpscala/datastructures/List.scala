@@ -250,4 +250,12 @@ object List {
     iter(l, 0)
   }
 
+  def removeAt[T](n: Int, xs: List[T]): List[T] = (n, xs) match {
+    case (n, xs) if n > List.length(xs) => xs
+    case (0, Cons(z, zs)) => zs
+    case (y, Cons(z, zs)) => Cons(z, removeAt(y-1, zs))
+  }
+
+  // flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+
 }
